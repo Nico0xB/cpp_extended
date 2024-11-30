@@ -24,13 +24,6 @@
 #include <iostream> /* Standard Ostream Objects */
 #include "macros.hpp" /* Macros */
 
-CPPX_NAMESPACE_STDX_START
 
-class ostream {
-    private:
-        std::ostream out; 
-};
-
-CPPX_NAMESPACE_STDX_END
 
 #endif /* CPPX_OUTPUT_HPP */
