@@ -21,7 +21,7 @@
 
 #pragma once
 
-#define CPPX_NAMESPACE_STDX_START   namespace stdx {
-#define CPPX_NAMESPACE_STDX_END     }
+#define CPPX_NAMESPACE_START   namespace cppx {
+#define CPPX_NAMESPACE_END     }
 
 #endif /* CPPX_MACROS_HPP */
