@@ -1,5 +1,5 @@
 /*
-Cpp Extended Output Header
+cpp_extended Standard Output Header
 Copyright (c) 2024 Nico0xB
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,15 +34,11 @@ namespace cppx {
             std::ostream *data; // Pointer to actual ostream
         public:
             ostream() : data(nullptr) {}; // Initializes the ostream pointer(*data) to nullptr
-
-            /*
-            OPERATOR OVERLOADS
-            */
-             // Assignment operator 
-             cppx::ostream& operator=(std::ostream& std_os) { 
+            // Assignment operator 
+            cppx::ostream &operator=(std::ostream& std_os) { 
                 this->data = &std_os; 
                 return *this;
-             }
+            }
             // Extracting operator(<<) overload
             template<class T>
             cppx::ostream &operator<<(T &var) {
@@ -52,6 +48,31 @@ namespace cppx {
                 return *this;
             }
     };
+
+    class wostream {
+        private:
+            std::wostream *data; // Pointer to actual ostream
+        public:
+            wostream() : data(nullptr) {}; // Initializes the ostream pointer(*data) to nullptr
+            // Assignment operator 
+            cppx::wostream &operator=(std::wostream& std_os) { 
+                this->data = &std_os; 
+                return *this;
+            }
+            // Extracting operator(<<) overload
+            template<class T>
+            cppx::wostream &operator<<(T &var) {
+                if (var) {
+                    *(this->data) << var;
+                };
+                return *this;
+            }
+    };
+
+    cppx::ostream out;
+    cppx::wostream wout;
+
+
 }; // namespace cppx
 
 #endif // CPPX_OUTPUT_HPP
