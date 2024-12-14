@@ -26,15 +26,32 @@ SOFTWARE.
 
 #pragma once
 
-#include <iostream>
+#include <iostream> // Standard stream objects (std::ostream, std::basic_ostream...)
 
 namespace cppx {
-    template<class CharT>
     class ostream {
+        private:
+            std::ostream *data; // Pointer to actual ostream
         public:
-            std::basic_ostream<CharT> &data; // Actual ostream
-            ostream(std::basic_ostream<CharT> &os) : data(os) {}
+            ostream() : data(nullptr) {}; // Initializes the ostream pointer(*data) to nullptr
+
+            /*
+            OPERATOR OVERLOADS
+            */
+             // Assignment operator 
+             cppx::ostream& operator=(std::ostream& std_os) { 
+                this->data = &std_os; 
+                return *this;
+             }
+            // Extracting operator(<<) overload
+            template<class T>
+            cppx::ostream &operator<<(T &var) {
+                if (var) {
+                    *(this->data) << var;
+                };
+                return *this;
+            }
     };
-}
+}; // namespace cppx
 
 #endif // CPPX_OUTPUT_HPP
